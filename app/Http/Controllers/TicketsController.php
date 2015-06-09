@@ -19,7 +19,8 @@ class TicketsController extends Controller {
 	public function index()
 	{
 		//$tickets = Ticket::all();
-		$tickets = Ticket::latest()->get();
+		//$tickets = Ticket::latest()->get();
+		$tickets = Ticket::with('comments.user')->orderBy('updated_at', 'DESC')->take(25)->get();
 
 		return view('tickets.index')->with('tickets', $tickets);
 	}

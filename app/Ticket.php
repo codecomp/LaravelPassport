@@ -17,6 +17,19 @@ class Ticket extends Model {
 	];
 
 	/**
+	 * Return the formatted status
+	 *
+	 * @param $status
+	 * @return mixed
+	 */
+	public function get_human_status( $status ){
+		//if(  !array_key_exists($status, $this->human_status) )
+			//throw new Exception('Invalid order status'); //TODO log error here
+
+		return $this->human_status[ $status ];
+	}
+
+	/**
 	 * Allow table columns to be mass assigned
 	 *
 	 * @var array

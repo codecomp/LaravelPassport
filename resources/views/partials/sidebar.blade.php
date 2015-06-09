@@ -18,7 +18,7 @@
 			<li class="{{ set_active('dashboard') }}">
                 <a href="{{ url('/') }}"><span class="glyphicon glyphicon-home"></span> Dashboard</a>
             </li>
-            <li class="{{ section_active(['tickets.create', 'tickets.index'], 'open active') }}">
+            <li class="{{ section_active(['tickets.create', 'tickets.index', 'tickets.show'], 'open active') }}">
                 <a href="#"><span class="glyphicon glyphicon-tasks"></span> Tickets</a>
                 <ul class="sub-nav">
                     <li class="{{ set_active('tickets.create') }}">
@@ -29,7 +29,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="{{ section_active(['users.create', 'users.index'], 'open active') }}">
+            <li class="{{ section_active(['users.create', 'users.index', 'users.show'], 'open active') }}">
                 <a href="#"><span class="glyphicon glyphicon-user"></span> Users</a>
                 <ul class="sub-nav">
                     <li class="{{ set_active('users.create') }}">
