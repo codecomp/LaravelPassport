@@ -1,8 +1,175 @@
+/* ==========================================================================
+	Includes
+   ========================================================================== */
+
 @import "bootstrap/bootstrap";
+
+/* ==========================================================================
+	Variables
+   ========================================================================== */
+
+/********************
+ * Colours
+ ********************/
+
+@white:			#ffffff;
+@black:			#000000;
+
+@main:			#333333;
+@lightMain:		lighten(@main, 5%);
+@mediumMain:	darken(@main, 2%);
+@darkMain:		darken(@main, 5%);
+
+/********************
+ * Sizes
+ ********************/
+
+
+/********************
+ * Fonts
+ ********************/
 
 @btn-font-weight: 300;
 @font-family-sans-serif: "Roboto", Helvetica, Arial, sans-serif;
 
-body, label, .checkbox label {
-	font-weight: 300;
+/* ==========================================================================
+	Global styles
+   ========================================================================== */
+
+a,
+a:active,
+a:focus{
+	outline: 0;
+	-moz-outline-style: none;
 }
+
+/* ==========================================================================
+	Site Structure
+   ========================================================================== */
+
+html{
+	height:100%;
+}
+
+body{
+	min-height:100%;
+}
+
+html,
+body{
+	padding:0;
+	margin:0;
+	position: relative;
+}
+
+/********************
+ * Sidebar
+ ********************/
+
+.main-sidebar{
+	background:@main;
+	color: @white;
+	position: absolute;
+	top:0;
+	left:0;
+	bottom:0;
+	width:230px;
+
+	.user-panel {
+		.clearfix;
+		padding:10px;
+		margin: 20px 0 0 0;
+		img{
+			width:45px;
+		}
+		.info{
+			padding: 5px 0 5px 15px;
+		}
+		p{
+			margin:0;
+		}
+		.status{
+			font-size:11px;
+			span{
+				color:green;
+			}
+		}
+	}
+}
+
+.sidebar-menu {
+	list-style: none;
+	margin: 20px 0 0 0;
+	padding: 0;
+	a{
+		text-decoration: none;
+	}
+	> li{
+		&.header {
+			background: @darkMain;
+			overflow: hidden;
+			text-overflow: clip;
+			padding: 12px 5px 12px 15px;
+		}
+		a {
+			color: fade(@white, 50%);
+			display: block;
+			padding: 12px 5px 12px 15px;
+		}
+		&.open .sub-nav{
+			display:block;
+		}
+		&.active a,
+		a:hover{
+			background: @mediumMain;
+			color:@white;
+		}
+	}
+	.sub-nav{
+		display:none;
+		padding:0;
+		li{
+			a{
+				color: fade(@white, 50%);
+				background:@lightMain;
+				display: block;
+				font-size: 14px;
+				padding: 5px 5px 5px 15px;
+			}
+			&.active a,
+			a:hover{
+				color:@white;
+			}
+		}
+	}
+	.glyphicon {
+		margin-right:5px;
+	}
+}
+
+/********************
+ * Content
+ ********************/
+
+.content-wrapper{
+	padding:20px 20px 20px 250px;
+}
+
+/********************
+ * Footer
+ ********************/
+
+
+/* ==========================================================================
+	Cross page elements
+   ========================================================================== */
+
+
+/* ==========================================================================
+	Pages
+   ========================================================================== */
+
+
+/* ==========================================================================
+	Responsive
+   ========================================================================== */
