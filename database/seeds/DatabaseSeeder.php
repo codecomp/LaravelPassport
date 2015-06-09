@@ -14,7 +14,17 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 
-		// $this->call('UserTableSeeder');
+		$this->call('RolesSeeder');
+
+		if (App::environment() !== 'production') {
+			//Test data
+
+
+		} else {
+			//Production data
+
+
+		}
 	}
 
 }
