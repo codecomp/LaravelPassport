@@ -23,7 +23,7 @@
         @foreach ($tickets as $ticket)
             <tr>
                 <td>{{ $ticket->get_human_status( $ticket->status ) }}</td>
-                <td><a href="{{ action('TicketsController@show', [$ticket->id]) }}">{{ $ticket->title }}</a></td>
+                <td>{!! link_to_route('tickets.show', $ticket->title, $ticket->id) !!}</td>
                 <td>{{ $ticket->comments[0]->user->name  }}</td>
                 <td>{{ $ticket->created_at->diffForHumans()  }}</td>
                 <td>{{ $ticket->updated_at->diffForHumans()  }}</td>

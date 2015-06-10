@@ -21,7 +21,7 @@
         <tbody>
         @foreach ($users as $user)
             <tr>
-                <td>{{ $user->name  }}</td>
+                <td>{!! link_to_route('users.edit', $user->name, $user->id) !!}</td>
                 <td><!-- TODO add roles --></td>
                 <td>{{ $user->created_at  }}</td>
                 <td>{{ $user->updated_at  }}</td>

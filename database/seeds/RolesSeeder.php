@@ -32,7 +32,7 @@ class RolesSeeder extends Seeder {
 		$roles = array(
 			array(
 				'name' 			=> 'admin',
-				'display_name' 	=> 'Admin user',
+				'display_name' 	=> 'Admin',
 				'description' 	=> 'User able to edit and manage entire website',
 				'permissions'	=> array(
 					'admin',

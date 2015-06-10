@@ -29,7 +29,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="{{ section_active(['users.create', 'users.index', 'users.show'], 'open active') }}">
+            <li class="{{ section_active(['users.create', 'users.index', 'users.edit'], 'open active') }}">
                 <a href="#"><span class="glyphicon glyphicon-user"></span> Users</a>
                 <ul class="sub-nav">
                     <li class="{{ set_active('users.create') }}">

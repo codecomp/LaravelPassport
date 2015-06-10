@@ -23,8 +23,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::resource('users', 'UsersController');
 	Route::resource('tickets', 'TicketsController');
-	Route::get('tickets/{ticket}/close', ['as' => 'tickets.close', 'uses' => 'TicketsController@close']);
-	Route::get('tickets/{ticket}/open', ['as' => 'tickets.open', 'uses' => 'TicketsController@open']);
+	//Route::get('tickets/{ticket}/close', ['as' => 'tickets.close', 'uses' => 'TicketsController@close']);
+	//Route::get('tickets/{ticket}/open', ['as' => 'tickets.open', 'uses' => 'TicketsController@open']);
 	Route::resource('tickets.comments', 'TicketCommentsController');
 
 });

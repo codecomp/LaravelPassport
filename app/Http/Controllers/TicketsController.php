@@ -32,8 +32,8 @@ class TicketsController extends Controller {
 	 */
 	public function create()
 	{
-		if ( !Auth::user()->can('add_ticket') )
-			//return response('Unauthorised', 401); //TODO Move to routes?
+		//if ( !Auth::user()->can('add_ticket') )
+		//	return response('Unauthorised', 401); //TODO Move to routes?
 
 		return view('tickets.create');
 	}
@@ -45,8 +45,8 @@ class TicketsController extends Controller {
 	 */
 	public function store(Request $request)
 	{
-		if ( !Auth::user()->can('add_ticket') )
-			//return response('Unauthorised', 401); //TODO Move to routes?
+		//if ( !Auth::user()->can('add_ticket') )
+		//	return response('Unauthorised', 401); //TODO Move to routes?
 
 		//Create a ticket from the request data
 		$ticket = new Ticket();
