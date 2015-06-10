@@ -25,9 +25,14 @@
                 <td>{{ $ticket->get_human_status( $ticket->status ) }}</td>
                 <td><a href="{{ action('TicketsController@show', [$ticket->id]) }}">{{ $ticket->title }}</a></td>
                 <td>{{ $ticket->comments[0]->user->name  }}</td>
-                <td>{{ $ticket->created_at  }}</td>
-                <td>{{ $ticket->updated_at  }}</td>
-                <td><!-- TODO Add actions --></td>
+                <td>{{ $ticket->created_at->diffForHumans()  }}</td>
+                <td>{{ $ticket->updated_at->diffForHumans()  }}</td>
+                <td>
+                    <!-- TODO Simplify actions -->
+                    {!! Form::open(['route' => ['tickets.destroy', $ticket->id], 'method' => 'DELETE']) !!}
+                        {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
+                    {!! Form::close() !!}
+                </td>
             </tr>
         @endforeach
         </tbody>

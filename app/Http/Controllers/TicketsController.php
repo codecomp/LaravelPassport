@@ -62,7 +62,7 @@ class TicketsController extends Controller {
 		$comment->save();
 
 		//Run the index method to display all the tickets
-		return $this->index();
+		return redirect()->route('tickets.index');
 	}
 
 	/**
@@ -79,28 +79,6 @@ class TicketsController extends Controller {
 	}
 
 	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
 	 * Remove the specified resource from storage.
 	 *
 	 * @param  int  $id
@@ -108,7 +86,10 @@ class TicketsController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		$ticket = Ticket::FindOrFail($id)->delete();
+
+		//Run the index
+		return redirect()->route('tickets.index');
 	}
 
 }

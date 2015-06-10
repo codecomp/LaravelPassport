@@ -44,8 +44,10 @@ class TicketCommentsController extends Controller {
 		$comment = new TicketComment();
 		$comment->content 	= $request->input('reply');
 		$comment->ticket_id = $ticket_id; //TODO make sure ticket exists
-		$comment->user_id 	= Auth::user()->id; //TODO set to current users ID
+		$comment->user_id 	= Auth::user()->id;
 		$comment->save();
+
+		//TODO Update updated_at timestamp on ticket
 
 		return redirect()->route('tickets.show', [$ticket_id]);
 	}

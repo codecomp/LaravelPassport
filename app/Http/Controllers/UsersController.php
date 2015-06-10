@@ -56,7 +56,7 @@ class UsersController extends Controller {
 		));
 
 		//Run the index method to display all the users
-		return $this->index();
+		return redirect()->route('users.index');
 	}
 
 	/**
