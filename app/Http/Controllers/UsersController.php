@@ -33,9 +33,7 @@ class UsersController extends Controller {
 		//if ( !Auth::user()->can('add_users') )
 		//	return response('Unauthorised', 401); //TODO Move to routes?
 
-		$user = new User();
-
-		return view('users.create')->with('user', $user);
+		return view('users.create');
 	}
 
 	/**
