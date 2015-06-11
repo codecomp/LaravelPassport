@@ -37,6 +37,7 @@ class RolesSeeder extends Seeder {
 				'permissions'	=> array(
 					'admin',
 					'edit_settings',
+					'view_users',
 					'add_users',
 					'edit_users',
 					'delete_users',
@@ -57,6 +58,7 @@ class RolesSeeder extends Seeder {
 				'description' 	=> 'User able to create and manage users and tickets',
 				'permissions'	=> array(
 					'add_users',
+					'view_users',
 					'edit_users',
 					'delete_users',
 					'assign_roles',
@@ -99,7 +101,7 @@ class RolesSeeder extends Seeder {
 			$r->display_name = $role['display_name'];
 			$r->description  = $role['description'];
 			$r->save();
-			//TODO change nto FirstOrCreate
+			//TODO change into FirstOrCreate
 
 			//Get roles permissions
 			$permissions = $p->whereIn('name', $role['permissions'])->get(['id'])->toArray();

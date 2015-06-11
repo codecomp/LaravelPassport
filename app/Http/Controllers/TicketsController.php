@@ -32,8 +32,8 @@ class TicketsController extends Controller {
 	 */
 	public function create()
 	{
-		//if ( !Auth::user()->can('add_ticket') )
-		//	return response('Unauthorised', 401); //TODO Move to routes?
+		if ( !Auth::user()->can('add_tickets') )
+			return response('Unauthorised', 403);
 
 		return view('tickets.create');
 	}
@@ -45,8 +45,8 @@ class TicketsController extends Controller {
 	 */
 	public function store(Request $request)
 	{
-		//if ( !Auth::user()->can('add_ticket') )
-		//	return response('Unauthorised', 401); //TODO Move to routes?
+		if ( !Auth::user()->can('add_tickets') )
+			return response('Unauthorised', 403);
 
 		//Create a ticket from the request data
 		$ticket = new Ticket();
@@ -58,7 +58,7 @@ class TicketsController extends Controller {
 		$comment = new TicketComment();
 		$comment->content = $request->input('description');
 		$comment->ticket_id = $ticket->id;
-		$comment->user_id = 1; //TODO set to current users ID
+		$comment->user_id = Auth::user()->id;
 		$comment->save();
 
 		//Run the index method to display all the tickets
@@ -73,7 +73,7 @@ class TicketsController extends Controller {
 	 */
 	public function show($id)
 	{
-		$ticket 	= Ticket::with('comments.user')->FindOrFail($id);
+		$ticket = Ticket::with('comments.user')->FindOrFail($id);
 
 		return view('tickets.show', compact('ticket'));
 	}
@@ -86,6 +86,9 @@ class TicketsController extends Controller {
 	 */
 	public function destroy($id)
 	{
+		if ( !Auth::user()->can('delete_tickets') )
+			return response('Unauthorised', 403);
+
 		$ticket = Ticket::FindOrFail($id)->delete();
 
 		//Run the index

@@ -37,8 +37,8 @@ class TicketCommentsController extends Controller {
 	 */
 	public function store(Request $request, $ticket_id)
 	{
-		//if ( !Auth::user()->can('add_comment') )
-		//	return response('Unauthorised', 401); //TODO move to routes?
+		if ( !Auth::user()->can('add_comment') )
+			return response('Unauthorised', 403);
 
 		//Add a new comment and assign it to the new ticket
 		$comment = new TicketComment();
