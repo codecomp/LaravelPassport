@@ -32,11 +32,11 @@
             <li class="{{ section_active(['users.create', 'users.index', 'users.edit'], 'open active') }}">
                 <a href="#"><span class="glyphicon glyphicon-user"></span> Users</a>
                 <ul class="sub-nav">
-                    <li class="{{ set_active('users.index') }}">
-                        {!! link_to_route('users.index', 'View Users')  !!}
-                    </li>
                     <li class="{{ set_active('users.create') }}">
                         {!! link_to_route('users.create', 'Add Users') !!}
+                    </li>
+                    <li class="{{ set_active('users.index') }}">
+                        {!! link_to_route('users.index', 'View Users')  !!}
                     </li>
                 </ul>
             </li>
