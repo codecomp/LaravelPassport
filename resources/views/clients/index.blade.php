@@ -1,33 +1,31 @@
 @extends('app')
 
 @section('contentheader_title')
-    Users
+    Clients
 @endsection
 
 @section('content')
 
-    {!! link_to_route('users.create', 'New User', null, ['class' => 'btn btn-primary']) !!}
+    {!! link_to_route('clients.create', 'New Client', null, ['class' => 'btn btn-primary']) !!}
 
     <table class="table table-striped">
         <thead>
         <tr>
             <th>Name</th>
-            <th>Role</th>
             <th>Created</th>
             <th>Updated</th>
             <th>Actions</th>
         </tr>
         </thead>
         <tbody>
-        @foreach ($users as $user)
+        @foreach ($clients as $client)
             <tr>
-                <td>{!! link_to_route('users.edit', $user->name, $user->id) !!}</td>
-                <td><!-- TODO add roles --></td>
-                <td>{{ $user->created_at->diffForHumans()  }}</td>
-                <td>{{ $user->updated_at->diffForHumans()  }}</td>
+                <td>{!! link_to_route('clients.edit', $client->name, $client->id) !!}</td>
+                <td>{{ $client->created_at->diffForHumans()  }}</td>
+                <td>{{ $client->updated_at->diffForHumans()  }}</td>
                 <td>
                     <!-- TODO Simplify actions -->
-                    {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'DELETE']) !!}
+                    {!! Form::open(['route' => ['clients.destroy', $client->id], 'method' => 'DELETE']) !!}
                         {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
                     {!! Form::close() !!}
                 </td>

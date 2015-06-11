@@ -19,6 +19,12 @@
 </div>
 
 <div class="form-group">
+    {!! Form::label('client', 'Client', ['class' => 'control-label']) !!}
+    {!! Form::select('client', $clients, null, ['class' => 'form-control']) !!}
+    <!-- TODO Load in users client in edit -->
+</div>
+
+<div class="form-group">
     {!! Form::label('role', 'Role', ['class' => 'control-label']) !!}
     {!! Form::select('role', $roles, null, ['class' => 'form-control']) !!}
     <!-- TODO Load in users roles in edit -->

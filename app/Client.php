@@ -19,7 +19,7 @@ class Client extends Model {
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
 	public function tickets(){
-		return $this->hasMany('App\Ticket');
+		return $this->hasMany('App\User');
 	}
 
 }

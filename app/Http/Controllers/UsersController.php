@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Client;
 use App\Role;
 use App\User;
 
@@ -36,9 +37,10 @@ class UsersController extends Controller {
 		if ( !Auth::user()->can('add_users') )
 			return response('Unauthorised', 403);
 
-		$roles = Role::lists('display_name', 'name');
+		$clients 	= Client::lists('name', 'id');
+		$roles 		= Role::lists('display_name', 'name');
 
-		return view('users.create')->with('roles', $roles);
+		return view('users.create')->with(['clients' => $clients, 'roles' => $roles]);
 	}
 
 	/**
@@ -48,22 +50,39 @@ class UsersController extends Controller {
 	 */
 	public function store(Request $request)
 	{
-		if ( !Auth::user()->can('add_users') || !Auth::user()->can('assign_roles') )
+		if ( !Auth::user()->can('add_users') )
+			return response('Unauthorised', 403);
+
+		if( $request->input('client') && !Auth::user()->can('assign_clients') )
+			return response('Unauthorised', 403);
+
+		if( $request->input('role') && !Auth::user()->can('assign_roles') )
 			return response('Unauthorised', 403);
 
 		//Make sure the password match
 		if( $request->input('password') !== $request->input('password2') )
 			return redirect()->back(); //TODO add message
 
+		//Create the user
 		$user = User::create(array(
 			'name' => $request->input('name'),
 			'email' => $request->input('email'),
 			'password' => bcrypt($request->input('password'))
 		));
 
-		//Assign user role
-		$role = Role::where('name', '=', $request->input('role'))->first();
-		$user->attachRole($role->id);
+		if( $request->input('client') ){
+			//Assign user client
+			$client = Role::where('id', '=', $request->input('client'))->first();
+			$user->client()->associate($client);
+			$user->save();
+		}
+
+		if( $request->input('role') ){
+			//Assign user role
+			$role = Role::where('name', '=', $request->input('role'))->first();
+			$user->attachRole($role->id);
+			$user->save();
+		}
 
 		//Run the index method to display all the users
 		return redirect()->route('users.index');
@@ -91,10 +110,11 @@ class UsersController extends Controller {
 		if ( Auth::user()->id != $id && !Auth::user()->can('edit_users') )
 			return response('Unauthorised', 403);
 
-		$user  = User::FindorFail($id);
-		$roles = Role::lists('display_name', 'name');
+		$user  	 = User::FindorFail($id);
+		$clients = Client::lists('name', 'id');
+		$roles 	 = Role::lists('display_name', 'name');
 
-		return view('users.edit')->with(['user' => $user, 'roles' => $roles ]);
+		return view('users.edit')->with(['user' => $user, 'clients' => $clients, 'roles' => $roles ]);
 	}
 
 	/**
@@ -124,7 +144,13 @@ class UsersController extends Controller {
 		if( ( !empty( $pass ) && !empty($pass2) ) && $request->input('password') == $request->input('password2') )
 			$user->password = bcrypt($request->input('password'));
 
-		//If the user cna assign roles w cn update the role with the post data
+		//If the user cna assign roles we update the role with the post data
+		if( Auth::user()->can('assign_clients') ){
+			$client = Role::where('id', '=', $request->input('client'))->first();
+			$user->client()->associate($client);
+		}
+
+		//If the user cna assign roles we update the role with the post data
 		if( Auth::user()->can('assign_roles') ){
 			//Remove all existing roles
 			$user->roles()->detach();
