@@ -18,9 +18,8 @@ class UsersController extends Controller {
 	 */
 	public function index()
 	{
-		//TODO fix (Authentication doesn't work with view_users?)
-		//if ( !Auth::user()->can('view_users') )
-		//	return response('Unauthorised', 403);
+		if ( !Auth::user()->can('view_users') )
+			return response('Unauthorised', 403);
 
 		$users = User::all();
 

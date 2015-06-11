@@ -15,6 +15,11 @@ class RolesSeeder extends Seeder {
 		$permissions = array(
 			array( 'name' => 'admin' ),
 			array( 'name' => 'edit_settings' ),
+			array( 'name' => 'view_clients' ),
+			array( 'name' => 'add_clients' ),
+			array( 'name' => 'edit_clients' ),
+			array( 'name' => 'delete_clients' ),
+			array( 'name' => 'view_users' ),
 			array( 'name' => 'add_users' ),
 			array( 'name' => 'edit_users' ),
 			array( 'name' => 'delete_users' ),
@@ -37,6 +42,10 @@ class RolesSeeder extends Seeder {
 				'permissions'	=> array(
 					'admin',
 					'edit_settings',
+					'view_clients',
+					'add_clients',
+					'edit_clients',
+					'delete_clients',
 					'view_users',
 					'add_users',
 					'edit_users',
@@ -57,6 +66,10 @@ class RolesSeeder extends Seeder {
 				'display_name' 	=> 'Account manager',
 				'description' 	=> 'User able to create and manage users and tickets',
 				'permissions'	=> array(
+					'view_clients',
+					'add_clients',
+					'edit_clients',
+					'delete_clients',
 					'add_users',
 					'view_users',
 					'edit_users',
