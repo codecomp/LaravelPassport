@@ -132,7 +132,10 @@ class UsersController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		$user = User::FindOrFail($id)->delete();
+
+		//Run the index
+		return redirect()->route('users.index');
 	}
 
 }

@@ -25,7 +25,12 @@
                 <td><!-- TODO add roles --></td>
                 <td>{{ $user->created_at  }}</td>
                 <td>{{ $user->updated_at  }}</td>
-                <td><!-- TODO Add actions --></td>
+                <td>
+                    <!-- TODO Simplify actions -->
+                    {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'DELETE']) !!}
+                        {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
+                    {!! Form::close() !!}
+                </td>
             </tr>
         @endforeach
         </tbody>
