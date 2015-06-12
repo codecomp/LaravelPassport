@@ -19,15 +19,13 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('client', 'Client', ['class' => 'control-label']) !!}
-    {!! Form::select('client', $clients, null, ['class' => 'form-control']) !!}
-    <!-- TODO Load in users client in edit -->
+    {!! Form::label('client_id', 'Client', ['class' => 'control-label']) !!}
+    {!! Form::select('client_id', $clients, null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
     {!! Form::label('role', 'Role', ['class' => 'control-label']) !!}
-    {!! Form::select('role', $roles, null, ['class' => 'form-control']) !!}
-    <!-- TODO Load in users roles in edit -->
+    {!! Form::select('role', $roles, (isset($role_id) ? $role_id : null), ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">

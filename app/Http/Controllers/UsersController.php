@@ -38,7 +38,7 @@ class UsersController extends Controller {
 			return response('Unauthorised', 403);
 
 		$clients 	= Client::lists('name', 'id');
-		$roles 		= Role::lists('display_name', 'name');
+		$roles 		= Role::lists('display_name', 'id');
 
 		return view('users.create')->with(['clients' => $clients, 'roles' => $roles]);
 	}
@@ -70,16 +70,16 @@ class UsersController extends Controller {
 			'password' => bcrypt($request->input('password'))
 		));
 
-		if( $request->input('client') ){
+		if( $request->input('client_id') ){
 			//Assign user client
-			$client = Role::where('id', '=', $request->input('client'))->first();
+			$client = Role::where('id', '=', $request->input('client_id'))->first();
 			$user->client()->associate($client);
 			$user->save();
 		}
 
 		if( $request->input('role') ){
 			//Assign user role
-			$role = Role::where('name', '=', $request->input('role'))->first();
+			$role = Role::where('id', '=', $request->input('role'))->first();
 			$user->attachRole($role->id);
 			$user->save();
 		}
@@ -112,7 +112,7 @@ class UsersController extends Controller {
 
 		$user  	 = User::FindorFail($id);
 		$clients = Client::lists('name', 'id');
-		$roles 	 = Role::lists('display_name', 'name');
+		$roles 	 = Role::lists('display_name', 'id');
 
 		return view('users.edit')->with(['user' => $user, 'clients' => $clients, 'roles' => $roles ]);
 	}
@@ -146,7 +146,7 @@ class UsersController extends Controller {
 
 		//If the user cna assign roles we update the role with the post data
 		if( Auth::user()->can('assign_clients') ){
-			$client = Role::where('id', '=', $request->input('client'))->first();
+			$client = Role::where('id', '=', $request->input('client_id'))->first();
 			$user->client()->associate($client);
 		}
 
@@ -156,8 +156,8 @@ class UsersController extends Controller {
 			$user->roles()->detach();
 
 			//Update role
-			$role = Role::where('name', '=', $request->input('role'))->first();
-			$user->attachRole($role->id);
+			$role = Role::where('id', '=', $request->input('role'))->first();
+			$user->roles()->attach($role);
 		}
 
 		$user->save();
