@@ -22,10 +22,13 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/', ['as' => 'dashboard', 'uses' =>'PagesController@dashboard']);
 
 	Route::resource('clients', 'ClientsController');
+
 	Route::resource('users', 'UsersController');
+
+    //Route::get('tickets/{ticket}/close', ['as' => 'tickets.close', 'uses' => 'TicketsController@close']);
+    //Route::get('tickets/{ticket}/open', ['as' => 'tickets.open', 'uses' => 'TicketsController@open']);
 	Route::resource('tickets', 'TicketsController');
-	//Route::get('tickets/{ticket}/close', ['as' => 'tickets.close', 'uses' => 'TicketsController@close']);
-	//Route::get('tickets/{ticket}/open', ['as' => 'tickets.open', 'uses' => 'TicketsController@open']);
+
 	Route::resource('tickets.comments', 'TicketCommentsController');
 
 });

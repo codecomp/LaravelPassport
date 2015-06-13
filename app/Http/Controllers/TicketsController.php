@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Client;
 use App\Ticket;
 use App\TicketComment;
 
@@ -18,11 +19,13 @@ class TicketsController extends Controller {
 	 */
 	public function index()
 	{
-		//$tickets = Ticket::all();
-		//$tickets = Ticket::latest()->get();
-		$tickets = Ticket::with('comments.user')->orderBy('updated_at', 'DESC')->take(25)->get();
+		if( Auth::user()->hasRole(['admin', 'manager']) ){
+            $clients = Client::with('tickets.comments.user')->orderBy('updated_at', 'DESC')->get();
+        } else {
+            $clients = Client::where('id', '=', Auth::user()->client_id)->with('tickets.comments.user')->orderBy('updated_at', 'DESC')->get();
+        }
 
-		return view('tickets.index')->with('tickets', $tickets);
+		return view('tickets.index')->with('clients', $clients);
 	}
 
 	/**
