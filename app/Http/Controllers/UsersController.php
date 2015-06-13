@@ -37,8 +37,8 @@ class UsersController extends Controller {
 		if ( !Auth::user()->can('add_users') )
 			return response('Unauthorised', 403);
 
-		$clients 	= Client::lists('name', 'id');
-		$roles 		= Role::lists('display_name', 'id');
+		$clients 	= Client::lists('name', 'id')->all();
+		$roles 		= Role::lists('display_name', 'id')->all();
 
 		return view('users.create')->with(['clients' => $clients, 'roles' => $roles]);
 	}
@@ -111,8 +111,8 @@ class UsersController extends Controller {
 			return response('Unauthorised', 403);
 
 		$user  	 = User::FindorFail($id);
-		$clients = Client::lists('name', 'id');
-		$roles 	 = Role::lists('display_name', 'id');
+		$clients = Client::lists('name', 'id')->all();
+		$roles 	 = Role::lists('display_name', 'id')->all();
 
 		return view('users.edit')->with(['user' => $user, 'clients' => $clients, 'roles' => $roles, 'role_id' => $user->roles()->first()->id ]);
 	}
