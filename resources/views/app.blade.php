@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
-@include('partials.htmlheader')
+@include('partials._htmlheader')
 <body>
 	<div class="wrapper">
 
-		@include('partials.mainheader')
+		@include('partials._mainheader')
 
-		@include('partials.sidebar')
+		@include('partials._sidebar')
 
 		<div class="content-wrapper">
 
             <section class="content-header">
-                @include('partials.contentheader')
+                @include('partials._contentheader')
             </section>
 
 			<section class="content">
@@ -22,7 +22,7 @@
 
 	</div>
 
-    @include('partials.scripts')
+    @include('partials._scripts')
 
 </body>
 </html>

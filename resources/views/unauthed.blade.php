@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-@include('partials.htmlheader')
+@include('partials._htmlheader')
 <body>
 	<div class="wrapper">
 
@@ -14,7 +14,7 @@
 
 	</div>
 
-    @include('partials.scripts')
+    @include('partials._scripts')
 
 </body>
 </html>

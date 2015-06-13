@@ -11,7 +11,7 @@
 
             {!! Form::model($client, ['route' => ['clients.update', $client->id], 'method' => 'PATCH']) !!}
 
-                @include('clients.partials.form', ['buttonText' => 'Update'])
+                @include('clients.partials._form', ['buttonText' => 'Update'])
 
             {!! Form::close() !!}
 
