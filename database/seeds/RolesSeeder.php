@@ -104,27 +104,27 @@ class RolesSeeder extends Seeder {
 		//Add permissions
 		$p = new App\Permission;
 		foreach( $permissions as $permission ){
-			$p->create($permission); //TODO tur into firstOrCreate
+            $p = App\Permission::firstOrCreate($permission);
 		}
 		$this->command->info('User permissions seeded');
 
 		//Add Roles
 		foreach( $roles as $role ){
-			$r = new App\Role;
+            //Find or make a new role
+            $r = App\Role::firstOrNew(['name' => $role['name']]);
 
-			//Create the role
-			$r->name 		 = $role['name'];
+			//Add/Update the specifics
 			$r->display_name = $role['display_name'];
 			$r->description  = $role['description'];
 			$r->save();
-			//TODO change into FirstOrCreate
 
 			//Get roles permissions
 			$permissions = $p->whereIn('name', $role['permissions'])->get(['id'])->toArray();
 
 			//Add the permissions
 			foreach( $permissions as $permission ){
-				$r->perms()->attach($permission['id']);
+                if (!$r->perms->contains($permission['id']))
+				    $r->perms()->attach($permission['id']);
 			}
 		}
 		$this->command->info('User roles seeded');

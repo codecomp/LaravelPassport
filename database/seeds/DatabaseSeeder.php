@@ -14,15 +14,27 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 
+        $this->command->info('---------------------------');
+        $this->command->info('Generating Global data');
+        $this->command->info('---------------------------');
+
 		$this->call('RolesSeeder');
 
-		if (App::environment() !== 'production') {
-			//Test data
+        $this->command->info('');
 
+		if (App::environment() !== 'production') {
+            $this->command->info('---------------------------');
+            $this->command->info('Generating Test data');
+            $this->command->info('---------------------------');
+
+            $this->call('ClientsSeeder');
+            $this->call('UsersSeeder');
+            $this->call('TicketsSeeder');
 
 		} else {
-			//Production data
-
+            $this->command->info('---------------------------');
+            $this->command->info('Generating Production data');
+            $this->command->info('---------------------------');
 
 		}
 	}
