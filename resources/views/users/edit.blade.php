@@ -11,7 +11,7 @@
 
             {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'PATCH']) !!}
 
-                @include('users.partials.form', ['role_id' => $user->roles()->first()->id, 'buttonText' => 'Update', 'password' => 'Update password (optional)'])
+                @include('users.partials.form', ['buttonText' => 'Update', 'password' => 'Update password (optional)'])
 
             {!! Form::close() !!}
 

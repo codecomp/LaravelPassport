@@ -114,7 +114,7 @@ class UsersController extends Controller {
 		$clients = Client::lists('name', 'id');
 		$roles 	 = Role::lists('display_name', 'id');
 
-		return view('users.edit')->with(['user' => $user, 'clients' => $clients, 'roles' => $roles ]);
+		return view('users.edit')->with(['user' => $user, 'clients' => $clients, 'roles' => $roles, 'role_id' => $user->roles()->first()->id ]);
 	}
 
 	/**
