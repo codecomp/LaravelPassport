@@ -51,7 +51,7 @@
                                             </ul>
                                         </div>
                                         {!! Form::open(['route' => ['tickets.destroy', $ticket->id], 'method' => 'DELETE', 'class' => 'pull-left']) !!}
-                                        {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
+                                        {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs confirm-delete']) !!}
                                         {!! Form::close() !!}
                                     </td>
                                 </tr>

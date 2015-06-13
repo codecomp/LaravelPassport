@@ -84,6 +84,8 @@ class UsersController extends Controller {
 			$user->save();
 		}
 
+        Flash::success('User created successfully');
+
 		//Run the index method to display all the users
 		return redirect()->route('users.index');
 	}
@@ -162,6 +164,8 @@ class UsersController extends Controller {
 
 		$user->save();
 
+        Flash::success('User updated successfully');
+
 		//Re render edit page
 		return $this->edit( $id );
 	}
@@ -178,6 +182,8 @@ class UsersController extends Controller {
 			return response('Unauthorised', 403);
 
 		$user = User::FindOrFail($id)->delete();
+
+        Flash::success('User deleted successfully');
 
 		//Run the index
 		return redirect()->route('users.index');

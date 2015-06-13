@@ -150,6 +150,7 @@ return [
 		 * Third party
 		 */
 		'Zizaco\Entrust\EntrustServiceProvider',
+        'Laracasts\Flash\FlashServiceProvider'
 
 	],
 
@@ -200,7 +201,8 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Form'		=> 'Illuminate\Html\FormFacade',
 		'Html'		=> 'Illuminate\Html\HtmlFacade',
-		'Entrust' 	=> 'Zizaco\Entrust\EntrustFacade'
+		'Entrust' 	=> 'Zizaco\Entrust\EntrustFacade',
+        'Flash'     => 'Laracasts\Flash\Flash'
 
 	],
 

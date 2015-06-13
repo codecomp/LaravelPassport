@@ -26,7 +26,7 @@
                 <td>
                     <!-- TODO Simplify actions -->
                     {!! Form::open(['route' => ['clients.destroy', $client->id], 'method' => 'DELETE']) !!}
-                        {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
+                        {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs confirm-delete']) !!}
                     {!! Form::close() !!}
                 </td>
             </tr>

@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Laracasts\Flash\Flash;
 
 class TicketsController extends Controller {
 
@@ -64,6 +65,8 @@ class TicketsController extends Controller {
 		$comment->user_id = Auth::user()->id;
 		$comment->save();
 
+        Flash::success('Ticket created successfully');
+
 		//Run the index method to display all the tickets
 		return redirect()->route('tickets.index');
 	}
@@ -93,6 +96,8 @@ class TicketsController extends Controller {
 			return response('Unauthorised', 403);
 
 		$ticket = Ticket::FindOrFail($id)->delete();
+
+        Flash::success('Ticket deleted successfully');
 
 		//Run the index
 		return redirect()->route('tickets.index');

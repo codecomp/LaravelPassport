@@ -5,6 +5,8 @@
 		<small>@yield('contentheader_description')</small>
 	</h1>
 
+    @include('flash::message')
+
     <?php /*
 	<ol class="breadcrumb">
 		<li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>

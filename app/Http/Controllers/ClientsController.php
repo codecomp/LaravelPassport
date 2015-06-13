@@ -51,6 +51,8 @@ class ClientsController extends Controller {
 		//Create a client from the request data
 		$client = Client::create( $request->all() );
 
+        Flash::success('Client added successfully');
+
 		//Run the index method to display all the tickets
 		return redirect()->route('clients.index');
 	}
@@ -98,6 +100,8 @@ class ClientsController extends Controller {
 		//Update a client from the request data
 		$client->update( $request->all() );
 
+        Flash::success('Client updated successfully');
+
 		//Re render edit page
 		return $this->edit( $id );
 	}
@@ -114,6 +118,8 @@ class ClientsController extends Controller {
 			return response('Unauthorised', 403);
 
 		$client = Client::FindOrFail($id)->delete();
+
+        Flash::success('Client deleted successfully');
 
 		//Run the index
 		return redirect()->route('clients.index');

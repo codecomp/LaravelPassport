@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Laracasts\Flash\Flash;
 
 class TicketCommentsController extends Controller {
 
@@ -48,6 +49,8 @@ class TicketCommentsController extends Controller {
 		$comment->save();
 
 		//TODO Update updated_at timestamp on ticket
+
+        Flash::success('Reply added successfully');
 
 		return redirect()->route('tickets.show', [$ticket_id]);
 	}
