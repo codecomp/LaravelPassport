@@ -19,6 +19,15 @@ class Client extends Model {
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
 	public function tickets(){
+		return $this->hasMany('App\Ticket');
+	}
+
+	/**
+	 * Clients have many Users
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function users(){
 		return $this->hasMany('App\User');
 	}
 
