@@ -32,7 +32,7 @@ $factory->define(App\Ticket::class, function ($faker) {
     return [
         'client_id' => App\Client::has('users')->get()->random(1)->id,
         'status' => $faker->numberBetween(0, 3),
-        'title' => $faker->text(200)
+        'title' => $faker->text(50)
     ];
 });
 
