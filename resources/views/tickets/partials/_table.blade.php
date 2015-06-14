@@ -8,7 +8,7 @@
         <th>Updated</th>
         @if( Auth::user()->can(['close_tickets', 'delete_tickets']) )
             <th>Actions</th>
-        @enif
+        @endif
     </tr>
     </thead>
     <tbody>

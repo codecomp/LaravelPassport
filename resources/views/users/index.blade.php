@@ -25,8 +25,8 @@
             <tr>
                 <td>{!! link_to_route('users.edit', $user->name, $user->id) !!}</td>
                 <td>
-                    @foreach( $user->roles() as $role )
-                        {{ $role->name }}
+                    @foreach( $user->roles as $role )
+                        {{ $role->display_name }}
                     @endforeach
                 </td>
                 <td>{{ $user->created_at->diffForHumans()  }}</td>

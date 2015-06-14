@@ -33,10 +33,10 @@
                             <div class="dropdown pull-left">
                                 <button class="btn btn-primary btn-xs dropdown-toggle" type="button" id="statusbutton{{ $client->id }}" data-toggle="dropdown">Actions <span class="caret"></span></button>
                                 <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="statusbutton{{ $client->id }}">
-                                    @if( Auth::users()->can('edit_clients') )
+                                    @if( Auth::user()->can('edit_clients') )
                                         <li role="presentation">{!! link_to_route('clients.edit', 'Edit', $client->id, ['class' => 'menuitem']) !!}</li>
                                     @endif
-                                    @if( Auth::users()->can('add_websites') )
+                                    @if( Auth::user()->can('add_websites') )
                                         <li role="presentation">{!! link_to_route('clients.websites.create', 'Create website', $client->id, ['class' => 'menuitem']) !!}</li>
                                     @endif
                                 </ul>

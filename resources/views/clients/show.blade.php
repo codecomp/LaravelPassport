@@ -63,7 +63,7 @@
                                                 {!! Form::open(['route' => ['clients.websites.destroy', $client->id, $website->id], 'method' => 'DELETE', 'class' => 'pull-left']) !!}
                                                     {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs confirm-delete']) !!}
                                                 {!! Form::close() !!}
-                                            @ndif
+                                            @endif
                                         </td>
                                     @endif
                                 </tr>

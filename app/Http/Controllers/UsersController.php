@@ -23,7 +23,7 @@ class UsersController extends Controller {
 		if ( !Auth::user()->can('view_users') )
 			return response('Unauthorised', 403);
 
-		$users = User::all();
+		$users = User::with('roles')->get();
 
 		return view('users.index')->with('users', $users);
 	}
