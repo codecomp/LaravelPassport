@@ -42,4 +42,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->belongsTo('App\Client');
 	}
 
+    /**
+     * Returns a Gravatar url from users email address
+     *
+     * @return string
+     */
+    public function getGravatarAttribute()
+    {
+        $hash = md5(strtolower(trim($this->attributes['email'])));
+        return "http://www.gravatar.com/avatar/$hash";
+    }
+
 }

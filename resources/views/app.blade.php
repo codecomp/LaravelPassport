@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 @include('partials._htmlheader')
-<body>
+<body class="has-sidebar">
 	<div class="wrapper">
 
 		@include('partials._mainheader')

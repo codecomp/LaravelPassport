@@ -23,7 +23,9 @@
                     <p>Websites</p>
                 </div>
                 <div class="panel-body">
-                    {!! link_to_route('clients.websites.create', 'Create website', $client->id, ['class' => 'btn btn-primary']) !!}
+                    @if( Auth::user()->can('add_websites') )
+                        {!! link_to_route('clients.websites.create', 'Create website', $client->id, ['class' => 'btn btn-primary']) !!}
+                    @endif
                     @if( ! $client->websites->count() )
                         <p class="panel-empty-message">No websites</p>
                     @else
@@ -37,7 +39,9 @@
                                     <th>SSH Host</th>
                                     <th>SSH Username</th>
                                     <th>SSH Password</th>
-                                    <th>Actions</th>
+                                    @if( Auth::user()->can(['add_websites', 'delete_websites']) )
+                                        <th>Actions</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -50,13 +54,18 @@
                                     <td>{{ $website->ssh_host }}</td>
                                     <td>{{ $website->ssh_username }}</td>
                                     <td>{{ $website->ssh_password }}</td>
-                                    <td>
-                                        {!! link_to_route('clients.websites.edit', 'Edit', [$client->id, $website->id], ['class' => 'btn btn-xs btn-primary  pull-left']) !!}
-
-                                        {!! Form::open(['route' => ['clients.websites.destroy', $client->id, $website->id], 'method' => 'DELETE', 'class' => 'pull-left']) !!}
-                                        {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs confirm-delete']) !!}
-                                        {!! Form::close() !!}
-                                    </td>
+                                    @if( Auth::user()->can(['add_websites', 'delete_websites']) )
+                                        <td>
+                                            @if( Auth::user()->can('add_websites') )
+                                                {!! link_to_route('clients.websites.edit', 'Edit', [$client->id, $website->id], ['class' => 'btn btn-xs btn-primary  pull-left']) !!}
+                                            @endif
+                                            @if( Auth::user()->can('delete_websites') )
+                                                {!! Form::open(['route' => ['clients.websites.destroy', $client->id, $website->id], 'method' => 'DELETE', 'class' => 'pull-left']) !!}
+                                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs confirm-delete']) !!}
+                                                {!! Form::close() !!}
+                                            @ndif
+                                        </td>
+                                    @endif
                                 </tr>
                             @endforeach
                             </tbody>

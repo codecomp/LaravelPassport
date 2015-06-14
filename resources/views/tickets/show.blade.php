@@ -18,19 +18,21 @@
             @endforeach
         </div>
 
-        {!! Form::open([ 'route' => ['tickets.comments.store', $ticket->id] ]) !!}
-            {!! Form::hidden('ticket_id', $ticket->id) !!}
+        @if( Auth::user()->can('add_comments') )
+            {!! Form::open([ 'route' => ['tickets.comments.store', $ticket->id] ]) !!}
+                {!! Form::hidden('ticket_id', $ticket->id) !!}
 
-            <div class="form-group">
-                {!! Form::label('reply', 'Reply') !!}
-                {!! Form::textarea('reply', null, ['class' => 'form-control']) !!}
-            </div>
+                <div class="form-group">
+                    {!! Form::label('reply', 'Reply') !!}
+                    {!! Form::textarea('reply', null, ['class' => 'form-control']) !!}
+                </div>
 
-            <div class="form-group">
-                {!! Form::submit('Add reply', ['class' => 'btn btn-primary']) !!}
-            </div>
+                <div class="form-group">
+                    {!! Form::submit('Add reply', ['class' => 'btn btn-primary']) !!}
+                </div>
 
-        {!! Form::close() !!}
+            {!! Form::close() !!}
+        @endif
 
     </article>
 @endsection

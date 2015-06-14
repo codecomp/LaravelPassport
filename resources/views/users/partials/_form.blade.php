@@ -18,15 +18,19 @@
     {!! Form::password('password2', ['class' => 'form-control']) !!}
 </div>
 
+@if( Auth::user()->can('assign_clients') )
 <div class="form-group">
     {!! Form::label('client_id', 'Client', ['class' => 'control-label']) !!}
     {!! Form::select('client_id', $clients, null, ['class' => 'form-control']) !!}
 </div>
+@endif
 
+@if( Auth::user()->can('assign_roles') )
 <div class="form-group">
     {!! Form::label('role', 'Role', ['class' => 'control-label']) !!}
     {!! Form::select('role', $roles, (isset($role_id) ? $role_id : null), ['class' => 'form-control']) !!}
 </div>
+@endif
 
 <div class="form-group">
     {!! Form::submit(isset($buttonText) ? $buttonText : 'Add user', ['class' => 'btn btn-primary']) !!}

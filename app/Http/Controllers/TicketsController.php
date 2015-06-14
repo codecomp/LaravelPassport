@@ -23,7 +23,7 @@ class TicketsController extends Controller {
 		if( Auth::user()->hasRole(['admin', 'manager']) ){
             $clients = Client::with('tickets.comments.user')->orderBy('updated_at', 'DESC')->get();
         } else {
-            $clients = Client::where('id', '=', Auth::user()->client_id)->with('tickets.comments.user')->orderBy('updated_at', 'DESC')->get();
+            $clients[] = Client::with('tickets.comments.user')->findOrFail( Auth::user()->client_id );
         }
 
 		return view('tickets.index')->with('clients', $clients);

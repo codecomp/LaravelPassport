@@ -1,8 +1,12 @@
 <?php
 
-function check_login()
-{
+function profile_image( $email_address ){
 
+    $hash = md5( strtolower( trim($email_address) ) );
+    if( file_exists('http://www.gravatar.com/avatar/'.$hash.'?s=200') )
+        return 'http://www.gravatar.com/avatar/'.$hash.'?s=200';
+
+    return 'https://placeholdit.imgix.net/~text?txtsize=33&txt=grvitar&w=160&h=160';
 }
 
 /**

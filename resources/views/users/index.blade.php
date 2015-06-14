@@ -15,22 +15,29 @@
             <th>Role</th>
             <th>Created</th>
             <th>Updated</th>
-            <th>Actions</th>
+            @if( Auth::user()->can('delete_users') )
+               <th>Actions</th>
+            @endif
         </tr>
         </thead>
         <tbody>
         @foreach ($users as $user)
             <tr>
                 <td>{!! link_to_route('users.edit', $user->name, $user->id) !!}</td>
-                <td><!-- TODO add roles --></td>
+                <td>
+                    @foreach( $user->roles() as $role )
+                        {{ $role->name }}
+                    @endforeach
+                </td>
                 <td>{{ $user->created_at->diffForHumans()  }}</td>
                 <td>{{ $user->updated_at->diffForHumans()  }}</td>
-                <td>
-                    <!-- TODO Simplify actions -->
-                    {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'DELETE']) !!}
-                        {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs confirm-delete']) !!}
-                    {!! Form::close() !!}
-                </td>
+                @if( Auth::user()->can('delete_users') )
+                    <td>
+                        {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'DELETE']) !!}
+                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs confirm-delete']) !!}
+                        {!! Form::close() !!}
+                    </td>
+                @endif
             </tr>
         @endforeach
         </tbody>

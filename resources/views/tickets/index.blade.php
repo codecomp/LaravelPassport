@@ -6,8 +6,9 @@
 
 @section('content')
 
-	{!! link_to_route('tickets.create', 'New Ticket', null, ['class' => 'btn btn-primary']) !!}
-
+    @if( Auth::user()->can('add_tickets') )
+	    {!! link_to_route('tickets.create', 'New Ticket', null, ['class' => 'btn btn-primary'])
+    @endif
 
     <div class="panel-group">
 

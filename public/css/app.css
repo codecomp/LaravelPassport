@@ -6356,20 +6356,30 @@ body {
 .main-sidebar .user-panel:after {
   clear: both;
 }
-.main-sidebar .user-panel img {
+.main-sidebar .user-panel .image {
+  padding-top: 6px;
+}
+.main-sidebar .user-panel .image img {
   width: 45px;
 }
 .main-sidebar .user-panel .info {
-  padding: 5px 0 5px 15px;
+  padding: 0 0 0 15px;
 }
-.main-sidebar .user-panel p {
+.main-sidebar .user-panel .info p {
   margin: 0;
 }
-.main-sidebar .user-panel .status {
+.main-sidebar .user-panel .info .status {
   font-size: 11px;
 }
-.main-sidebar .user-panel .status span {
+.main-sidebar .user-panel .info .status span {
   color: green;
+}
+.main-sidebar .user-panel .info a {
+  font-size: 11px;
+  color: white;
+}
+.main-sidebar .user-panel .info a:hover {
+  text-decoration: underline;
 }
 .sidebar-menu {
   list-style: none;
@@ -6419,7 +6429,7 @@ body {
 /********************
  * Content
  ********************/
-.content-wrapper {
+.has-sidebar .content-wrapper {
   padding: 20px 20px 20px 250px;
 }
 /********************

@@ -79,19 +79,29 @@ body{
 		.clearfix;
 		padding:10px;
 		margin: 20px 0 0 0;
-		img{
-			width:45px;
+		.image{
+			padding-top:6px;
+			img{
+				width:45px;
+			}
 		}
 		.info{
-			padding: 5px 0 5px 15px;
-		}
-		p{
-			margin:0;
-		}
-		.status{
-			font-size:11px;
-			span{
-				color:green;
+			padding: 0 0 0 15px;
+			p{
+				margin:0;
+			}
+			.status{
+				font-size:11px;
+				span{
+					color:green;
+				}
+			}
+			a{
+				font-size:11px;
+				color:white;
+				&:hover{
+					text-decoration: underline;
+				}
 			}
 		}
 	}
@@ -151,7 +161,7 @@ body{
  * Content
  ********************/
 
-.content-wrapper{
+.has-sidebar .content-wrapper{
 	padding:20px 20px 20px 250px;
 }
 

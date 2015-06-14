@@ -29,14 +29,15 @@ class RolesSeeder extends Seeder {
 			array( 'name' => 'edit_users' ),
 			array( 'name' => 'delete_users' ),
 			array( 'name' => 'assign_roles' ),
+			array( 'name' => 'view_tickets' ),
 			array( 'name' => 'add_tickets' ),
 			array( 'name' => 'edit_tickets' ),
 			array( 'name' => 'close_tickets' ),
 			array( 'name' => 'delete_tickets' ),
-			array( 'name' => 'add_comment' ),
-			array( 'name' => 'add_internal_comment' ),
-			array( 'name' => 'edit_comment' ),
-			array( 'name' => 'delete_comment' ),
+			array( 'name' => 'add_comments' ),
+			array( 'name' => 'add_internal_comments' ),
+			array( 'name' => 'edit_comments' ),
+			array( 'name' => 'delete_comments' ),
 		);
 
 		$roles = array(
@@ -61,14 +62,15 @@ class RolesSeeder extends Seeder {
 					'edit_users',
 					'delete_users',
 					'assign_roles',
+                    'view_tickets',
 					'add_tickets',
 					'edit_tickets',
 					'close_tickets',
 					'delete_tickets',
-					'add_comment',
-					'add_internal_comment',
-					'edit_comment',
-					'delete_comment'
+					'add_comments',
+					'add_internal_comments',
+					'edit_comments',
+					'delete_comments'
 				)
 			),
 			array(
@@ -90,14 +92,15 @@ class RolesSeeder extends Seeder {
 					'edit_users',
 					'delete_users',
 					'assign_roles',
+                    'view_tickets',
 					'add_tickets',
 					'edit_tickets',
 					'close_tickets',
 					'delete_tickets',
-					'add_comment',
-					'add_internal_comment',
-					'edit_comment',
-					'delete_comment'
+					'add_comments',
+					'add_internal_comments',
+					'edit_comments',
+					'delete_comments'
 				)
 			),
 			array(
@@ -105,10 +108,11 @@ class RolesSeeder extends Seeder {
 				'display_name' 	=> 'User',
 				'description' 	=> '',
 				'permissions'	=> array(
+					'view_tickets',
 					'add_tickets',
 					'edit_tickets',
-					'add_comment',
-					'edit_comment',
+					'add_comments',
+					'edit_comments',
 				)
 			)
 		);
