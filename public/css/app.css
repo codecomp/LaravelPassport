@@ -6428,6 +6428,11 @@ body {
 /* ==========================================================================
 	Cross page elements
    ========================================================================== */
+.panel .panel-heading p,
+.panel .panel-heading h2,
+.panel .panel-heading h3 {
+  margin: 0;
+}
 .panel .panel-empty-message {
   font-size: 60px;
   color: #dddddd;

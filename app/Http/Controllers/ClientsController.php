@@ -65,7 +65,12 @@ class ClientsController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+        if ( !Auth::user()->can('view_clients') )
+            return response('Unauthorised', 403);
+
+        $client  = Client::with('websites', 'tickets.comments.user')->FindorFail($id);
+
+        return view('clients.show')->with('client', $client);
 	}
 
 	/**

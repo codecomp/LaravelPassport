@@ -23,6 +23,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::resource('clients', 'ClientsController');
 
+    Route::resource('clients.websites', 'WebsitesController');
+
 	Route::resource('users', 'UsersController');
 
     //Route::get('tickets/{ticket}/close', ['as' => 'tickets.close', 'uses' => 'TicketsController@close']);

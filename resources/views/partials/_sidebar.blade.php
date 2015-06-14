@@ -18,7 +18,14 @@
 			<li class="{{ set_active('dashboard') }}">
                 <a href="{{ url('/') }}"><span class="glyphicon glyphicon-home"></span> Dashboard</a>
             </li>
-            <li class="{{ section_active(['clients.create', 'clients.index', 'clients.show', 'clients.edit'], 'open active') }}">
+            <li class="{{ section_active([
+                'clients.create',
+                'clients.index',
+                'clients.show',
+                'clients.edit',
+                'clients.websites.create',
+                'clients.websites.edit'
+            ], 'open active') }}">
                 <a href="#"><span class="glyphicon glyphicon-list-alt"></span> Clients</a>
                 <ul class="sub-nav">
                     <li class="{{ set_active('clients.create') }}">

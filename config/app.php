@@ -2,6 +2,22 @@
 
 return [
 
+    /*
+	|--------------------------------------------------------------------------
+	| Administrator IP addresses
+	|--------------------------------------------------------------------------
+	|
+	| Set a list of IP addresses that have higher privilege access than
+    | that of other users. For instance users accessing the website
+    | from a valid admin IP may view plain text passwords.
+	|
+	*/
+
+    'administrator_ip' => [
+        '78.148.229.26',
+        '192.168.10.1'
+    ],
+
 	/*
 	|--------------------------------------------------------------------------
 	| Application Debug Mode
@@ -78,7 +94,7 @@ return [
 	|
 	*/
 
-	'key' => env('APP_KEY', 'SomeRandomString'),
+	'key' => env('APP_KEY', 'H8mLtGwxWnHQBLpw9Gpj323gqLag8fgv'),
 
 	'cipher' => MCRYPT_RIJNDAEL_128,
 

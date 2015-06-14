@@ -4,5 +4,10 @@
 </div>
 
 <div class="form-group">
+    {!! Form::label('notes', 'Notes', ['class' => 'control-label']) !!}
+    {!! Form::textarea('notes', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
     {!! Form::submit(isset($buttonText) ? $buttonText : 'Add Client', ['class' => 'btn btn-primary']) !!}
 </div>

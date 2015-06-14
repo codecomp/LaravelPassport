@@ -31,4 +31,13 @@ class Client extends Model {
 		return $this->hasMany('App\User');
 	}
 
+	/**
+	 * Clients have many Websites
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function websites(){
+		return $this->hasMany('App\Website');
+	}
+
 }

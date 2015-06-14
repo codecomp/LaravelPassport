@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('contentheader_title')
-    New User
+    {{ $client->name  }}: New Website
 @endsection
 
 @section('content')
@@ -9,9 +9,9 @@
     <div class="container-fluid">
         <div class="row">
 
-            {!! Form::open(['route' => 'users.store', 'autocomplete' => 'off']) !!}
+            {!! Form::open(['route' => ['clients.websites.store', $client->id], 'autocomplete' => 'off']) !!}
 
-                @include('users.partials._form')
+                @include('websites.partials._form')
 
             {!! Form::close() !!}
 
