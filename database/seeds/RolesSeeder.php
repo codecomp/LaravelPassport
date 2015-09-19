@@ -91,7 +91,26 @@ class RolesSeeder extends Seeder {
 					'view_users',
 					'edit_users',
 					'delete_users',
-					'assign_roles',
+                    'view_tickets',
+					'add_tickets',
+					'edit_tickets',
+					'close_tickets',
+					'delete_tickets',
+					'add_comments',
+					'add_internal_comments',
+					'edit_comments',
+					'delete_comments'
+				)
+			),
+			array(
+				'name' 			=> 'developer',
+				'display_name' 	=> 'Developer',
+				'description' 	=> 'User able to answer tickets',
+				'permissions'	=> array(
+                    'view_websites',
+                    'add_websites',
+                    'edit_websites',
+                    'delete_websites',
                     'view_tickets',
 					'add_tickets',
 					'edit_tickets',

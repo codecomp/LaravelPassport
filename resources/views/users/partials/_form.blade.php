@@ -25,7 +25,7 @@
 </div>
 @endif
 
-@if( Auth::user()->can('assign_roles') )
+@if( Auth::user()->can('assign_roles') && ( !isset($user) || $user->id != Auth::user()->getId() ) )
 <div class="form-group">
     {!! Form::label('role', 'Role', ['class' => 'control-label']) !!}
     {!! Form::select('role', $roles, (isset($role_id) ? $role_id : null), ['class' => 'form-control']) !!}

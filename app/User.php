@@ -53,4 +53,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return "http://www.gravatar.com/avatar/$hash";
     }
 
+    /**
+     * Returns authenticated users ID
+     *
+     * @return mixed
+     */
+    public function getId(){
+        return $this->id;
+    }
+
 }
