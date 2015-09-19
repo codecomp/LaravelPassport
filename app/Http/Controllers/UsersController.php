@@ -39,7 +39,7 @@ class UsersController extends Controller {
 			return response('Unauthorised', 403);
 
 		$clients 	= Client::lists('name', 'id')->all();
-		$roles 		= Role::lists('display_name', 'id')->all();
+		$roles 		= Role::assignableRoles();
 
 		return view('users.create')->with(['clients' => $clients, 'roles' => $roles]);
 	}
@@ -79,11 +79,16 @@ class UsersController extends Controller {
 		}
 
 		if( $request->input('role') ){
-			//Assign user role
+            //Get requested role
 			$role = Role::where('id', '=', $request->input('role'))->first();
-			$user->attachRole($role->id);
-			$user->save();
-		}
+		} else {
+            //Get default role
+            $role = Role::where('name', '=', 'user')->first();
+        }
+
+        //Assign user role
+        $user->attachRole($role->id);
+        $user->save();
 
         Flash::success('User created successfully');
 
@@ -115,7 +120,7 @@ class UsersController extends Controller {
 
 		$user  	 = User::FindorFail($id);
 		$clients = Client::lists('name', 'id')->all();
-		$roles 	 = Role::lists('display_name', 'id')->all();
+		$roles 	 = Role::assignableRoles();
 
 		return view('users.edit')->with(['user' => $user, 'clients' => $clients, 'roles' => $roles, 'role_id' => $user->roles()->first()->id ]);
 	}
