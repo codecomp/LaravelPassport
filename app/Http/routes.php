@@ -33,4 +33,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::resource('tickets.comments', 'TicketCommentsController');
 
+    Route::resource('uploads', 'UploadsController', ['except' => ['create', 'show', 'edit', 'update']]);
+
 });
